@@ -5,10 +5,15 @@ using UnityEngine.InputSystem.XInput;
 public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
-    public float moveSpeed = 3;
-    public float jumpHeight = 300;
-    public float maxSpeed = 1000;
-    float x_input;
+    [SerializeField]
+    private float moveSpeed = 3;
+    [SerializeField]
+    private float jumpHeight = 300;
+    [SerializeField]
+    private float maxSpeed = 1000;
+    [SerializeField]
+    private float x_input;
+    [SerializeField]
     public bool canJump;
 
     #endregion
@@ -69,6 +74,7 @@ public class PlayerController : MonoBehaviour
 		}
 
         if (Input.GetKeyDown(KeyCode.Space) && canJump) {
+            canJump = false;
             rb.AddForce(new Vector2(0, jumpHeight));
         }
     }
