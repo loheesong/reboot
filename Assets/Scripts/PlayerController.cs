@@ -19,6 +19,12 @@ public class PlayerController : MonoBehaviour
 
     #region Gameplay_variables
     private bool hasKey;
+    public class RecordedFrame {
+        public Vector2 position;
+        public float rotation;
+        public Vector2 velocity;
+        public float time;
+    }
     #endregion
 
     #region Interact_variables 
@@ -42,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E)) {
             Interact();
+        } else if (Input.GetKeyDown(KeyCode.R)) {
+            Reboot();
         }
     }
 
@@ -70,6 +78,10 @@ public class PlayerController : MonoBehaviour
     #region Gameplay_functions
     public void CollectedKey() {
         hasKey = true;
+    }
+
+    private void Reboot() {
+        Debug.Log("reboot");
     }
     #endregion
 
