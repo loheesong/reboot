@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     }
     public static List<List<RecordedFrame>> allRecordings = new List<List<RecordedFrame>>();
     private List<RecordedFrame> currentRecording = new List<RecordedFrame>();
+    static float roundStartTime; // used to record time relative to start of round
     #endregion
 
     #region Interact_variables 
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
             position = transform.position,
             rotation = transform.rotation.eulerAngles.z,
             velocity = rb.linearVelocity,
-            time = Time.time
+            time = Time.time - roundStartTime
         });
     }
     #endregion
@@ -116,6 +117,7 @@ public class PlayerController : MonoBehaviour
     private void ResetLevel() {
         // fix this to load current scene
         SceneManager.LoadScene("Level1");
+        roundStartTime = Time.time; // reset time for each reboot
     }
 
     private void SaveRecording() {
