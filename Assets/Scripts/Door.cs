@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // transition to the next level
+    public void NextLevel() {
+        Debug.Log("go nexg");
+        SceneManager.LoadScene("Level2");
     }
 }

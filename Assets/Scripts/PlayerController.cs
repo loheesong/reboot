@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     private bool hasKey;
     #endregion
 
+    #region Interact_variables 
+    private Vector2 currDirection;
+    #endregion
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,6 +39,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
+
+        if (Input.GetKeyDown(KeyCode.E)) {
+            Interact();
+        }
     }
 
 
@@ -44,6 +51,7 @@ public class PlayerController : MonoBehaviour
     {   
         x_input = Input.GetAxisRaw("Horizontal");
         rb.AddForce(new Vector2(x_input * moveSpeed, 0));
+        currDirection = new Vector2(x_input, 0);
 
         if (rb.linearVelocity.x > maxSpeed) {
 			rb.linearVelocity = new Vector2 (maxSpeed, rb.linearVelocity.y);
@@ -62,6 +70,22 @@ public class PlayerController : MonoBehaviour
     #region Gameplay_functions
     public void CollectedKey() {
         hasKey = true;
+    }
+    #endregion
+
+    #region Interact_functions
+    private void Interact() {
+        Debug.Log("asdasdas");
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(rb.position + currDirection, Vector2.one, 0f, Vector2.zero);
+        foreach (RaycastHit2D hit in hits) {
+            if (hit.transform.CompareTag("Exit")) {
+                if (hasKey) {
+                    hit.transform.GetComponent<Door>().NextLevel();
+                } else {
+                    Debug.Log("no key");
+                }
+            }
+        }
     }
     #endregion
 }
