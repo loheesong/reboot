@@ -106,4 +106,10 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
+
+    #region Access Functions
+    public bool check_HasKey() {
+        return hasKey;
+    }
+    #endregion
 }
