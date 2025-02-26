@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.InputSystem.XInput;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,12 +26,21 @@ public class PlayerController : MonoBehaviour
         public float rotation;
         public Vector2 velocity;
         public float time;
+
+        public override string ToString()
+        {
+            return $"{position} {rotation} {velocity} {time}";
+        }
     }
+    public static List<List<RecordedFrame>> allRecordings = new List<List<RecordedFrame>>();
+    private List<RecordedFrame> currentRecording = new List<RecordedFrame>();
     #endregion
 
     #region Interact_variables 
     private Vector2 currDirection;
     #endregion
+
+    #region Unity_functions
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,6 +64,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Unity fn: Store position, rotation (as float), and velocity at each physics step
+    void FixedUpdate()
+    {
+        currentRecording.Add(new RecordedFrame
+        {
+            position = transform.position,
+            rotation = transform.rotation.eulerAngles.z,
+            velocity = rb.linearVelocity,
+            time = Time.time
+        });
+    }
+    #endregion
 
     #region Movement_functions
     private void Move()
@@ -68,6 +91,9 @@ public class PlayerController : MonoBehaviour
 			rb.linearVelocity = new Vector2 (-maxSpeed, rb.linearVelocity.y);
 		}
 
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            // Debug.Log("jump pressed" + canJump);
+        }
         if (Input.GetKeyDown(KeyCode.Space) && canJump) {
             rb.AddForce(new Vector2(0, jumpHeight));
         }
@@ -82,6 +108,23 @@ public class PlayerController : MonoBehaviour
 
     private void Reboot() {
         Debug.Log("reboot");
+        // PrintRecording();
+        SaveRecording();
+        ResetLevel();
+    }
+
+    private void ResetLevel() {
+        // fix this to load current scene
+        SceneManager.LoadScene("Level1");
+    }
+
+    private void SaveRecording() {
+        allRecordings.Add(new List<RecordedFrame>(currentRecording));
+        currentRecording.Clear();
+    }
+
+    public List<List<RecordedFrame>> GetAllRecordings() {
+        return allRecordings;
     }
     #endregion
 
@@ -99,5 +142,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    #endregion
+
+    #region Debug_functions
+    public void PrintRecording(List<RecordedFrame> recordedFrames) {
+        foreach (RecordedFrame frame in recordedFrames) {
+            Debug.Log(frame.ToString());
+        }
+    }
+
     #endregion
 }
