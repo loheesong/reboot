@@ -156,6 +156,7 @@ public class PlayerController : MonoBehaviour
     public bool check_HasKey() {
         return hasKey;
     }
+    #endregion
     #region Debug_functions
     public void PrintRecording(List<RecordedFrame> recordedFrames) {
         foreach (RecordedFrame frame in recordedFrames) {
