@@ -1,16 +1,33 @@
+using System.Linq;
 using UnityEngine;
 
 public class Button : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    public int groupID; // id to control which doors get affected
+    private int objectsOnPlate = 0;
+    private MovableDoor[] movableDoors;
+
+    void Start() {
+        movableDoors = FindObjectsByType<MovableDoor>(FindObjectsSortMode.None).Where(d => d.groupID == groupID).ToArray();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            objectsOnPlate++;
+            foreach (MovableDoor door in movableDoors) {
+                door.OpenDoor();
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision) {
+        if (collision.CompareTag("Player")) {
+            objectsOnPlate--;
+            if (objectsOnPlate == 0) {
+                foreach (MovableDoor door in movableDoors) {
+                    door.CloseDoor();
+                }
+            }
+        }
     }
 }
