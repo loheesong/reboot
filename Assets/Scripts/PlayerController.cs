@@ -7,10 +7,15 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
-    public float moveSpeed = 3;
-    public float jumpHeight = 300;
-    public float maxSpeed = 1000;
-    float x_input;
+    [SerializeField]
+    private float moveSpeed = 3;
+    [SerializeField]
+    private float jumpHeight = 300;
+    [SerializeField]
+    private float maxSpeed = 1000;
+    [SerializeField]
+    private float x_input;
+    [SerializeField]
     public bool canJump;
 
     #endregion
@@ -96,6 +101,7 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("jump pressed" + canJump);
         }
         if (Input.GetKeyDown(KeyCode.Space) && canJump) {
+            canJump = false;
             rb.AddForce(new Vector2(0, jumpHeight));
         }
     }
@@ -146,6 +152,10 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Access Functions
+    public bool check_HasKey() {
+        return hasKey;
+    }
     #region Debug_functions
     public void PrintRecording(List<RecordedFrame> recordedFrames) {
         foreach (RecordedFrame frame in recordedFrames) {
