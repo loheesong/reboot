@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
-    private int currentLevel = 2;
+    private int currentLevel = 1;
     private int maxLevel;
     #region Unity_functions
     private void Awake() {

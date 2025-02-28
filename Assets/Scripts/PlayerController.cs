@@ -103,9 +103,6 @@ public class PlayerController : MonoBehaviour
 			rb.linearVelocity = new Vector2 (-maxSpeed, rb.linearVelocity.y);
 		}
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            // Debug.Log("jump pressed" + canJump);
-        }
         if (Input.GetKeyDown(KeyCode.Space) && canJump) {
             canJump = false;
             rb.AddForce(new Vector2(0, jumpHeight));
@@ -153,6 +150,8 @@ public class PlayerController : MonoBehaviour
             if (hit.transform.CompareTag("Exit")) {
                 if (hasKey) {
                     hit.transform.GetComponent<Door>().NextLevel();
+                    ClearAllRecording();
+                    roundStartTime = Time.time; // reset time
                 } else {
                     Debug.Log("no key");
                 }

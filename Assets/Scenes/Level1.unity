@@ -653,14 +653,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Map Edge
       objectReference: {fileID: 0}
-    - target: {fileID: 2276070987015101329, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4321854940669758277, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4911412800326320873, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.44858897
@@ -699,10 +691,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4911412800326320873, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8136033857529996482, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
-      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

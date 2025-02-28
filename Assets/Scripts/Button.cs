@@ -12,6 +12,10 @@ public class Button : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
+        Activate(collision);
+    }
+
+    public void Activate(Collider2D collision) {
         if (collision.CompareTag("Player")) {
             objectsOnPlate++;
             foreach (MovableDoor door in movableDoors) {

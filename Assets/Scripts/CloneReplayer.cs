@@ -6,6 +6,8 @@ public class CloneReplayer : MonoBehaviour {
     private int frameIndex = 0;
     private Rigidbody2D rb;
     private float startTime;
+
+    public LayerMask interactable;
     
     public void Initialize(List<PlayerController.RecordedFrame> data) {
         replayData = data;
@@ -31,5 +33,13 @@ public class CloneReplayer : MonoBehaviour {
             rb.rotation = replayData[frameIndex].rotation;
             rb.linearVelocity = replayData[frameIndex].velocity;
         }
+
+        // need to fix later to interact with boxes 
+        Collider2D[] detectedPlates = Physics2D.OverlapBoxAll(transform.position, rb.GetComponent<BoxCollider2D>().bounds.size, 0, interactable);
+        foreach (Collider2D plate in detectedPlates)
+        {
+            plate.GetComponent<Button>().Activate(this.GetComponent<Collider2D>());
+        }
+
     }
 }
