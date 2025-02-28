@@ -5,9 +5,7 @@ using UnityEngine.SceneManagement;
 public class FeetCollider : MonoBehaviour
 {
     bool isFloor(GameObject gameObject) {
-        //return gameObject.layer == LayerMask.NameToLayer("Floor");
-        //Debug.Log("jump");
-        return gameObject.tag == "Floor";
+        return gameObject.layer == LayerMask.NameToLayer("Floor");
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -17,6 +15,6 @@ public class FeetCollider : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        //GetComponentInParent<PlayerController>().canJump = false;
+        GetComponentInParent<PlayerController>().canJump = false;
     }
 }

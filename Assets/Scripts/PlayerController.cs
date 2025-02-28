@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     private float x_input;
     [SerializeField]
     public bool canJump;
-
     #endregion
 
     #region Physics_variables
@@ -46,10 +45,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 currDirection;
     #endregion
 
+    public GameManager gameManager;
+
     #region Unity_functions
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,6 +69,10 @@ public class PlayerController : MonoBehaviour
             Interact();
         } else if (Input.GetKeyDown(KeyCode.R)) {
             Reboot();
+        } else if (Input.GetKeyDown(KeyCode.Q)) {
+            // reset level if player mess up
+            ClearAllRecording();
+            ResetLevel();
         }
     }
 
@@ -115,19 +121,22 @@ public class PlayerController : MonoBehaviour
 
     private void Reboot() {
         Debug.Log("reboot");
-        // PrintRecording();
         SaveRecording();
         ResetLevel();
     }
 
     private void ResetLevel() {
-        // fix this to load current scene
-        SceneManager.LoadScene("Level1");
+        gameManager.ReloadCurrentLevel();
         roundStartTime = Time.time; // reset time for each reboot
     }
 
     private void SaveRecording() {
         allRecordings.Add(new List<RecordedFrame>(currentRecording));
+        currentRecording.Clear();
+    }
+
+    private void ClearAllRecording() {
+        allRecordings.Clear();
         currentRecording.Clear();
     }
 
@@ -152,11 +161,6 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    #region Access Functions
-    public bool check_HasKey() {
-        return hasKey;
-    }
-    #endregion
     #region Debug_functions
     public void PrintRecording(List<RecordedFrame> recordedFrames) {
         foreach (RecordedFrame frame in recordedFrames) {

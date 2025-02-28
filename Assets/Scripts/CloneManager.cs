@@ -8,7 +8,6 @@ public class CloneManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("clone manager start");
         playerController = FindFirstObjectByType<PlayerController>();
         SpawnClones();
     }
@@ -16,7 +15,6 @@ public class CloneManager : MonoBehaviour
     public void SpawnClones()
     {
         List<List<PlayerController.RecordedFrame>> allRecordings = playerController.GetAllRecordings();
-        Debug.Log("spawnclones");
 
         foreach (var recording in allRecordings)
         {
