@@ -135,6 +135,7 @@ MonoBehaviour:
   maxSpeed: 5
   x_input: 0
   canJump: 0
+  gameManager: {fileID: 0}
 --- !u!61 &6335916225881955980
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -145,7 +146,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0d901010b3ee6452f8b8a999553f3f2f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

@@ -15,6 +15,8 @@ public class FeetCollider : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        GetComponentInParent<PlayerController>().canJump = false;
+        if (isFloor(collision.gameObject)) {
+            GetComponentInParent<PlayerController>().canJump = false;
+        }
     }
 }
