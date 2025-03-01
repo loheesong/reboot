@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.781, y: -4.304, z: 0}
-  m_LocalScale: {x: 2.2554514, y: 2.4796686, z: 1}
+  m_LocalScale: {x: 1.9755498, y: 2.1719418, z: 0.8759}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8945786131020957600}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  jumpHeight: 300
+  jumpHeight: 350
   maxSpeed: 5
   x_input: 0
   canJump: 0
@@ -147,7 +147,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 0d901010b3ee6452f8b8a999553f3f2f, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 7968743599873672096}
   m_Layer: 0
   m_Name: FeetCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
