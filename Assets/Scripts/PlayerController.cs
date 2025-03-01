@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         anim = GetComponent<Animator>();
+        Debug.Log("awakeaaa");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
