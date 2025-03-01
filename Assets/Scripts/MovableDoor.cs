@@ -7,6 +7,7 @@ public class MovableDoor : MonoBehaviour
     public Vector2 openPosition;
     [Tooltip("Set same as button groupID for button to control this door")]
     public int groupID;
+    public float moveSpeed = 3f;
     private Vector2 closedPosition;
     private bool isOpening = false;
     
@@ -33,7 +34,7 @@ public class MovableDoor : MonoBehaviour
     private IEnumerator MoveDoor(Vector2 openPosition) {
         while ((Vector2)transform.position != openPosition)
         {
-            transform.position = Vector2.MoveTowards(transform.position, openPosition, Time.deltaTime * 3f);
+            transform.position = Vector2.MoveTowards(transform.position, openPosition, Time.deltaTime * moveSpeed);
             yield return null;
         }
     }
