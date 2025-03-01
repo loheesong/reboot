@@ -23,10 +23,14 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Scene_transitions
-    public void StartScene() {
-        SceneManager.LoadScene("");
+    public void StartGame() {
+        SceneManager.LoadScene($"Level{currentLevel}");
     }
 
+    public void MainMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+    
     public void NextScene() {
         currentLevel++;
 

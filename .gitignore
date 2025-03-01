@@ -75,3 +75,6 @@ crashlytics-build.properties
 
 .vscode
 .DS_Store
+
+Assets/TextMesh Pro.meta
+Assets/TextMesh Pro/
