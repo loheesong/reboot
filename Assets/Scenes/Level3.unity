@@ -206,7 +206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3049026496389080935, guid: 49582a1e4654d4b259086a6b8950dc59, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 3049026496389080935, guid: 49582a1e4654d4b259086a6b8950dc59, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1247,6 +1247,18 @@ PrefabInstance:
     - target: {fileID: 5736658099390945584, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
       propertyPath: m_Name
       value: Level Design
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991866010436427860, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
+      propertyPath: m_ColliderPaths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5991866010436427860, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
+      propertyPath: m_CompositePaths.m_Paths.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501761825463624991, guid: 3813a6354f1bf4b419ac78be7e7991ff, type: 3}
+      propertyPath: m_CompositeOperation
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
