@@ -133,9 +133,9 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(-maxSpeed, rb.linearVelocity.y);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("aaa: " + canJump);
+            gameManager.NextScene();
         }
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
