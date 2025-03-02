@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private int maxLevel;
     #region Unity_functions
     private void Awake() {
-        maxLevel = SceneManager.sceneCountInBuildSettings;
+        maxLevel = SceneManager.sceneCountInBuildSettings - 2; // dont count main menu and end scene
         Debug.Log("gamemanager");
         if(Instance == null)
         {
@@ -36,7 +36,13 @@ public class GameManager : MonoBehaviour
 
         if (currentLevel <= maxLevel) {
             SceneManager.LoadScene($"Level{currentLevel}");
+        } else {
+            EndScene();
         }
+    }
+
+    public void EndScene() {
+        SceneManager.LoadScene("EndMenu");
     }
 
     public void ReloadCurrentLevel() {
