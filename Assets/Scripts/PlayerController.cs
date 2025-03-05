@@ -63,7 +63,6 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         anim = GetComponent<Animator>();
         Debug.Log("awakeaaa");
     }
@@ -71,6 +70,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         anim.SetFloat("facingDirection", 1);
     }
 
@@ -210,6 +210,9 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    public bool check_HasKey() {
+        return hasKey;
+    }
     #endregion
 
     #region Debug_functions
@@ -222,4 +225,5 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
+
 }
