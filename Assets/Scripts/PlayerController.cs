@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
     [SerializeField]
-    private float moveSpeed = 3;
+    private float moveSpeed = 9;
 
     [SerializeField]
     private float jumpHeight = 300;
 
     [SerializeField]
-    private float maxSpeed = 1000;
+    private float maxSpeed = 3000;
 
     [SerializeField]
     private float x_input;
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
     // Unity fn: Store position, rotation (as float), and velocity at each physics step
     void FixedUpdate()
     {
+        // Move();
         currentRecording.Add(
             new RecordedFrame
             {
